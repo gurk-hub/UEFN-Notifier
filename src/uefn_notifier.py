@@ -24,7 +24,7 @@ os.makedirs(APPDATA_FOLDER, exist_ok=True)
 SETTINGS_FILE = os.path.join(APPDATA_FOLDER, "settings.json")
 EVENT_LOG_FILE = os.path.join(APPDATA_FOLDER, "events.txt")
 
-__version__ = "1.4.0"
+__version__ = "1.4.1"
 
 DEFAULT_SETTINGS = {
     "log_file": "",
@@ -33,7 +33,7 @@ DEFAULT_SETTINGS = {
         {
             "name": "✅ Session Connected",
             "keywords": ["EMemorySamplerState::Ready"],
-            "sound_file": "success.wav",
+            "sound_file": "default_success.wav",
             "notify": True
         },
         {
@@ -49,7 +49,7 @@ DEFAULT_SETTINGS = {
             "keywords": [
                 "LogEditorBuildUtils: Build time"
             ],
-            "sound_file": "success.wav",
+            "sound_file": "default_success.wav",
             "notify": True
         },
         {
@@ -107,7 +107,7 @@ if "triggers" not in settings:
         {
             "name": "✅ Session Connected",
             "keywords": ["EMemorySamplerState::Ready"],
-            "sound_file": "success.wav",
+            "sound_file": "default_success.wav",
             "notify": True
         },
         {
@@ -123,7 +123,7 @@ if "triggers" not in settings:
             "keywords": [
                 "LogEditorBuildUtils: Build time"
             ],
-            "sound_file": "success.wav",
+            "sound_file": "default_success.wav",
             "notify": True
         },
         {
@@ -491,6 +491,7 @@ def select_file(title="Select File", filetypes=(("All files", "*.*"),), initiald
 
 def toggle_notifications(icon_obj, item):
     settings["show_notifications"] = not settings.get("show_notifications", False)
+    notify("✅Notifications Enabled", "This is what they look like")
     save_settings()
     icon_obj.update_menu()
 

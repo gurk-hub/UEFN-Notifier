@@ -12,12 +12,11 @@ Downloadable releases can be found on the Itch page for this project.
 
 ## ✅Features
 
-- Plays a sound when changes are pushed  
-- Detects success and failure  
+- Plays a sound when changes are pushed or HLOD is generated
 - Set up your own triggers and custom sounds
-- Option to launch on Windows startup  
-- One-click install and use  
-- Lightweight with very low resource usage  
+- Option to launch on Windows startup
+- Lightweight with very low resource usage
+- One-click install and use​​
 
 ## 🔃Usage
 
@@ -34,6 +33,7 @@ If you'd like to contribute to this project, follow these steps to set up your d
 1. Install Python (version 3.7 or higher is recommended).  
 2. Install the required dependencies by running:
     ```pip install -r requirements.txt```
+
 That's it! You should now have everything needed to run and contribute to the project.
 
 ## 🪲Known Issues
