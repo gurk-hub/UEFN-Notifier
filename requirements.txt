@@ -1,0 +1,4 @@
+pystray
+Pillow
+pywin32
+winotify

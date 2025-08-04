@@ -3,8 +3,12 @@ import shutil
 import subprocess
 import re
 
+#
+#  This is a simple script for automatically building a new executable version
+#
+
 # Path to your main Python file
-MAIN_FILE = os.path.join("src", "uefn_push_notifier.py")
+MAIN_FILE = os.path.join("src", "uefn_notifier.py")
 
 # Extract version from __version__ variable
 with open(MAIN_FILE, "r", encoding="utf-8") as f:
@@ -22,7 +26,7 @@ os.makedirs(release_folder, exist_ok=True)
 cmd = [
     "pyinstaller",
     "--onefile",
-    "--windowed",
+    "--noconsole",
     f"--icon=assets/icon.ico",
     f"--add-data=assets;assets",
     "src/uefn_notifier.py"

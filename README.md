@@ -1,34 +1,49 @@
-# UEFN-Notifier
+# UEFN Notifier
 
-Pushing changes in UEFN can take a while, and you might start doing something else while waiting—browsing websites, working on assets, or making dinner. Wouldn't it be great if a sound played when your changes finished pushing?
+Pushing changes in UEFN can take a while, and you might start doing something else while waiting—browsing a certain website, working on assets, or making dinner. Wouldn't it be great if a sound played when your changes finished pushing?
 
 Well fear no more - UEFN Notifier is here with a solution that will save you time!
 
-## Features
+## ⬇️Releases
+
+Downloadable releases can be found on the Itch page for this project.
+
+[![Download](https://img.shields.io/badge/Download-UEFN%20Notifier-blue?style=for-the-badge)](https://gurkis.itch.io/uefn-push-notifier)
+
+## ✅Features
 
 - Plays a sound when changes are pushed  
 - Detects success and failure  
-- Allows choosing your own notification sounds  
+- Set up your own triggers and custom sounds
 - Option to launch on Windows startup  
 - One-click install and use  
 - Lightweight with very low resource usage  
 
-## Usage
+## 🔃Usage
 
 1. Move the `uefn_notifier.exe` file to a safe location (e.g., your Documents folder).  
 2. Open the program. It will show a notification and run in your system tray.  
 3. Right-click the system tray icon to access options, check status, and view last detection times.  
 
-That's it—simple and effective!
+*Updating:* Just delete the old .exe file, your settings are saved in your AppData folder.
 
-## Known Issues
+## 🔧Development Setup
 
-- On some systems, the file explorer may not open properly when selecting a new sound file. Double-clicking the sound file should still work.  
+If you'd like to contribute to this project, follow these steps to set up your development environment:
+
+1. Install Python (version 3.7 or higher is recommended).  
+2. Install the required dependencies by running:
+    ```pip install -r requirements.txt```
+That's it! You should now have everything needed to run and contribute to the project.
+
+## 🪲Known Issues
+
+- On some systems, the file explorer may not work properly when selecting a new sound file. Double-clicking the sound file should still work.  
 - Permission errors may occur if your antivirus blocks the program.  
 - The sound sometimes plays a bit early, before Fortnite has fully loaded.  
 - When launched on startup, the command prompt window may remain visible.  
 
-## Support
+## 🧰Support
 
 If you have any questions, issues, or suggestions, feel free to comment or contact me directly:
 
