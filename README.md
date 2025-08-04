@@ -40,8 +40,7 @@ That's it! You should now have everything needed to run and contribute to the pr
 
 - On some systems, the file explorer may not work properly when selecting a new sound file. Double-clicking the sound file should still work.  
 - Permission errors may occur if your antivirus blocks the program.  
-- The sound sometimes plays a bit early, before Fortnite has fully loaded.  
-- When launched on startup, the command prompt window may remain visible.  
+- If you manually edit the settings file you have to restart the program for it to update.
 
 ## 🧰Support
 
