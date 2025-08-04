@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.spec
+
+# Virtual environments
+env/
+venv/
+.venv/
+
+# IDE / Editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Local data & logs
+*.log
+*.txt
+!README.md
+!requirements.txt
+
+# AppData settings & event log
+UEFNPushNotifier/
+*.db
+*.json
+
+# PyInstaller output
+build/
+dist/
+
+# Versioned releases
+releases/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini

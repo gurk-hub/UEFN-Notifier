@@ -20,12 +20,15 @@ from win32com.shell import shell
 from winotify import Notification, audio
 
 # ---------------- PATHS ----------------
-APPDATA_FOLDER = os.path.join(os.getenv("APPDATA"), "UEFNPushNotifier")
+APPDATA_FOLDER = os.path.join(os.getenv("APPDATA"), "UEFNNotifier")
 os.makedirs(APPDATA_FOLDER, exist_ok=True)
 SETTINGS_FILE = os.path.join(APPDATA_FOLDER, "settings.json")
 EVENT_LOG_FILE = os.path.join(APPDATA_FOLDER, "events.txt")
 
 # ---------------- SETTINGS ----------------
+
+__version__ = "1.3.0"
+
 settings = {
     "log_file": "",
     "success_sound_file": "",   # Empty = default
@@ -46,11 +49,18 @@ last_failure_time = "Never"
 icon = None  # Tray icon reference
 
 # ---------------- RESOURCE PATH ----------------
-def resource_path(relative_path):
+def resource_path(relative_path: str) -> str:
+    """
+    Get absolute path to a resource.
+    Works in dev (src/assets) and with PyInstaller (--onefile).
+    """
     try:
+        # PyInstaller stores temp path in _MEIPASS
         base_path = sys._MEIPASS
     except AttributeError:
-        base_path = os.path.dirname(os.path.abspath(__file__))  # <<<
+        # Dev mode: go to project root (parent of src folder)
+        base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    
     return os.path.join(base_path, relative_path)
 
 ICON_PATH = resource_path(os.path.join("assets", "icon.ico"))
@@ -88,7 +98,7 @@ def get_startup_shortcut_path():
         os.getenv("APPDATA"),
         r"Microsoft\Windows\Start Menu\Programs\Startup"
     )
-    shortcut_name = "UEFNPushNotifier.lnk"  # fixed name
+    shortcut_name = "UEFNNotifier.lnk"  # fixed name
     return os.path.join(startup_folder, shortcut_name)
 
 def is_startup_enabled():
@@ -167,7 +177,7 @@ def notify(title, message):
     log_event("NOTIFICATION", title)
     try:
         toast = Notification(
-            app_id="UEFN Push Notifier",  # Your app name here
+            app_id="UEFN Notifier",  # Your app name here
             title=title,
             msg=message,
             icon=ICON_PATH  # Path to your .ico file
@@ -188,7 +198,7 @@ def reset_settings(icon_obj, item):
     save_settings()
     update_status("Settings reset.")
     icon_obj.update_menu()
-    notify("UEFN Push Notifier", "Settings have been reset to default.")
+    notify("UEFN Notifier", "Settings have been reset to default.")
 
 # ---------------- STATUS ----------------
 def update_status(msg=None):
@@ -363,9 +373,9 @@ def create_icon():
     )
 
     return pystray.Icon(
-        "UEFN Push Notifier",
+        "UEFN Notifier",
         Image.open(ICON_PATH),
-        "UEFN Push Notifier",
+        "UEFN Notifier",
         menu=pystray.Menu(
             item(status_label, None, enabled=False),
             item(last_notification_label, None, enabled=False),
@@ -382,7 +392,7 @@ if __name__ == "__main__":
 
     if not launched_from_startup:
         notify("👋", "Program started and monitoring logs.")
-    log_event("LAUNCHED", "UEFN Push Notifier Opened")
+    log_event("LAUNCHED", "UEFN Notifier Opened")
 
     # Auto-detect log if missing or invalid
     if not settings["log_file"] or not os.path.exists(settings["log_file"]):
